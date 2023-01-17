@@ -1,100 +1,102 @@
 ---
-- name: install zsh shell packages on debian based distro
-  apt:
+- name: Install Zsh Shell packages on Debian based distro
+  ansible.builtin.apt:
     name: zsh
-    state: latest
-  become: yes
+    state: present
+  become: true
   when: ansible_os_family == 'Debian'
 
-- name: install zsh shell packages on redhat based distro
-  yum:
+- name: Install Zsh Shell packages on RedHat based distro
+  ansible.builtin.yum:
     name: zsh
-    state: latest
-  become: yes
+    state: present
+  become: true
   when: ansible_os_family == 'RedHat'
 
-- name: make sure git package is installed on debian based distro
-  apt:
+- name: Ensure git package is installed on Debian based distro
+  ansible.builtin.apt:
     name: git
     state: present
-  become: yes
+  become: true
   when: ansible_os_family == 'Debian'
 
-- name: make sure git package is installed on redhat based distro
-  yum:
+- name: Ensure git package is installed on RedHat based distro
+  ansible.builtin.yum:
     name: git
     state: present
-  become: yes
+  become: true
   when: ansible_os_family == 'RedHat'
 
-- name: clone oh-my-zsh git repository to user's home folder
-  git:
+- name: Clone Oh-My-Zsh repository to user's home folder
+  ansible.builtin.git:
     repo: https://github.com/ohmyzsh/ohmyzsh.git
     dest: /home/{{ item }}/.oh-my-zsh
   with_items: "{{ omz_users }}"
 
-- name: clone oh-my-zsh git repository to root home folder
-  git:
+- name: Clone Oh-My-Zsh repository to root home folder
+  ansible.builtin.git:
     repo: https://github.com/ohmyzsh/ohmyzsh.git
     dest: /root/.oh-my-zsh
-  become: yes
+  become: true
   when: omz_root
 
-- name: clone zsh-autosuggestions plugin git repo
-  git:
+- name: Clone zsh-autosuggestions plugin repository for users
+  ansible.builtin.git:
     repo: https://github.com/zsh-users/zsh-autosuggestions.git
     dest: /home/{{ item }}/.oh-my-zsh/plugins/zsh-autosuggestions
   with_items: "{{ omz_users }}"
 
-- name: clone zsh-autosuggestions plugin git repo for root
-  git:
+- name: Clone zsh-autosuggestions plugin repository for root
+  ansible.builtin.git:
     repo: https://github.com/zsh-users/zsh-autosuggestions.git
     dest: /root/.oh-my-zsh/plugins/zsh-autosuggestions
-  become: yes
+  become: true
   when: omz_root
 
-- name: copy .zshrc template to user's home folder
-  template:
+- name: Copy .zshrc template to user's home folder
+  ansible.builtin.template:
     src: zshrc.j2
     dest: /home/{{ item }}/.zshrc
-    backup: yes
+    mode: 0640
+    backup: true
   with_items: "{{ omz_users }}"
 
-- name: copy .zshrc template to root home folder
-  template:
+- name: Copy .zshrc template to root home folder
+  ansible.builtin.template:
     src: zshrc.j2
     dest: /root/.zshrc
-    backup: yes
-  become: yes
+    mode: 0640
+    backup: true
+  become: true
   when: omz_root
 
-- name: setup user permissions for .oh-my-zsh dir
-  file:
+- name: Setup user permissions for .oh-my-zsh dir
+  ansible.builtin.file:
     path: /home/{{ item }}/.oh-my-zsh
     owner: "{{ item }}"
     group: "{{ item }}"
     mode: 0755
   with_items: "{{ omz_users }}"
 
-- name: setup user permissions for .zshrc file
-  file:
+- name: Setup user permissions for .zshrc file
+  ansible.builtin.file:
     path: /home/{{ item }}/.zshrc
     owner: "{{ item }}"
     group: "{{ item }}"
     mode: 0640
   with_items: "{{ omz_users }}"
 
-- name: change default shell to zsh for users
-  user:
+- name: Change default shell to Zsh for users
+  ansible.builtin.user:
     name: "{{ item }}"
     shell: "{{ omz_zsh_path }}"
   with_items: "{{ omz_users }}"
-  become: yes
+  become: true
   when: omz_chsh
 
-- name: change default shell to zsh for root
-  user:
+- name: Change default shell to Zsh for root
+  ansible.builtin.user:
     name: root
     shell: "{{ omz_zsh_path }}"
-  become: yes
+  become: true
   when: omz_chsh and omz_root

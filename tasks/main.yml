@@ -1,9 +1,10 @@
 ---
-- name: deploy omz
-  include: omz.yml
+- name: Deploy Oh-My-Zsh
+  ansible.builtin.include_tasks:
+    file: omz.yml
   when: omz_enable
 
-- name: deploy mcfly
-  include: mcfly.yml
+- name: Deploy McFly
+  ansible.builtin.include_tasks:
+    file: mcfly.yml
   when: omz_mcfly_enable
-
