@@ -11,32 +11,32 @@ Also you can install [McFly](https://github.com/cantino/mcfly) optionally if you
 Role variables
 --------------
 ```yaml
-    omz_enable: false
-    omz_users: []
-    omz_root: true
-    omz_chsh: true
-    omz_zsh_path: "/bin/zsh"
+omz_enable: false
+omz_users: []
+omz_root: true
+omz_chsh: true
+omz_zsh_path: "/bin/zsh"
 
-    omz_theme: "candy"
-    omz_case_sensitive_completion: false
-    omz_hyphen_insensitive_completion: false
-    omz_disable_auto_update: false
-    omz_auto_update_interval: 30
-    omz_disable_ls_colors: false
-    omz_disable_auto_title: false
-    omz_enable_auto_correction: true
-    omz_completion_waiting_dots: true
-    omz_history_stamps: "yyyy-mm-dd"
-    omz_plugins: "git some-other-plugin ..."
-    omz_autosuggestions_plugin: true
-    omz_language: "en_US.UTF-8"
-    omz_disable_xon_xoff: true
+omz_theme: "candy"
+omz_case_sensitive_completion: false
+omz_hyphen_insensitive_completion: false
+omz_disable_auto_update: false
+omz_auto_update_interval: 30
+omz_disable_ls_colors: false
+omz_disable_auto_title: false
+omz_enable_auto_correction: true
+omz_completion_waiting_dots: true
+omz_history_stamps: "yyyy-mm-dd"
+omz_plugins: "git some-other-plugin ..."
+omz_autosuggestions_plugin: true
+omz_language: "en_US.UTF-8"
+omz_disable_xon_xoff: true
 
-    omz_mcfly_enable: false
-    omz_mcfly_version: latest
-    omz_mcfly_vim: true
-    omz_mcfly_results: 50
-    omz_mcfly_history: 10000
+omz_mcfly_enable: false
+omz_mcfly_version: latest
+omz_mcfly_vim: true
+omz_mcfly_results: 50
+omz_mcfly_history: 10000
 ```
 Examples
 --------
