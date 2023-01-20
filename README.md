@@ -15,7 +15,8 @@ Role variables
     omz_users: []
     omz_root: true
     omz_chsh: true
-    zsh_path: "/bin/zsh"
+    omz_zsh_path: "/bin/zsh"
+
     omz_theme: "candy"
     omz_case_sensitive_completion: false
     omz_hyphen_insensitive_completion: false
@@ -26,9 +27,13 @@ Role variables
     omz_enable_auto_correction: true
     omz_completion_waiting_dots: true
     omz_history_stamps: "yyyy-mm-dd"
-    omz_plugins: "docker git vagrant vi-mode nmap rsync"
+    omz_plugins: "git some-other-plugin ..."
+    omz_autosuggestions_plugin: true
     omz_language: "en_US.UTF-8"
+    omz_disable_xon_xoff: true
+
     omz_mcfly_enable: false
+    omz_mcfly_version: latest
     omz_mcfly_vim: true
     omz_mcfly_results: 50
     omz_mcfly_history: 10000
