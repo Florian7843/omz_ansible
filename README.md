@@ -25,7 +25,7 @@ omz_auto_update_interval: 30
 omz_disable_ls_colors: false
 omz_disable_auto_title: false
 omz_enable_auto_correction: true
-omz_completion_waiting_dots: true
+omz_completion_waiting_string: "..."
 omz_history_stamps: "yyyy-mm-dd"
 omz_plugins: "git some-other-plugin ..."
 omz_autosuggestions_plugin: true
@@ -48,7 +48,7 @@ Examples
           omz_mcfly_enable: true,
           omz_users: [user1, user2],
           omz_theme: "cloud",
-          omz_completion_waiting_dots: false
+          omz_completion_waiting_string: ""
         }
 ```
 License
